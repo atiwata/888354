@@ -1,0 +1,57 @@
+<html>
+	<head>
+	<style>
+		body{
+			text-align: center;
+		}
+		h1{
+			border-bottom: 1px solid;
+		}
+		label{
+			font-size: 20px;
+		}
+	</style>
+		<script>
+		function Searchstring(){
+			var text = document.getElementById('text').value;
+			var search = document.getElementById('search').value;
+			var check = document.querySelector('input[name="sensitive"]:checked').value;
+			var num = "";
+			if(check == 'Y'){
+				num = text.match(new RegExp(search,'g')).length;
+			}else if(check == 'N'){
+				num = text.match(new RegExp(search,'gi')).length;
+			}
+			document.getElementById('result').innerHTML = "Result for Search :" + num;
+		}		
+		</script>
+	</head>
+	<body>
+		<h1>EX2-Search String Non Sensitive Case</h1>
+			<div class="form-group">
+				<label>Text Input : </label>
+				<textarea name="text" id="text" rows="10" cols="50"> </textarea>
+			</div>
+		<br>
+		
+			<div class="form-group">
+				<label>Sensitive Case : </label>
+				<label class="radio-inline">
+					<input type="radio" name="sensitive" value="Y">Yes
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="sensitive" value="N">No
+				</label>
+			</div>
+		<br>
+		
+		<div class="form-group">
+			<label>Search : </label>
+			<input type="text" name="search" id="search">
+		</div>
+		<br>
+		
+		<button onclick="Searchstring()">Search</button>
+		<p id="result"></p>
+	</body>	
+</html>
