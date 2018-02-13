@@ -1,0 +1,55 @@
+<html>
+	<style>
+		h1{
+			border-bottom: 1px solid;
+		}
+		body{
+			text-align: center;
+		}
+	</style>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<script>
+		$(document).ready(function(){
+			random();
+		});
+		
+		function random(){
+		var min = -99, max = 99;
+		var first = Math.floor(Math.random()*(max-min)+min);
+		var second = Math.floor(Math.random()*(max-min)+min);
+		var sum = first + second;
+		$("#a").html(first +" + "+second+" = ");
+		$("#sum").val(sum);
+		$("#check").html(" ");
+		$("#result").val("");
+		}
+		
+		function answer(){
+		var result = $("#result").val();
+		var sum = $("#sum").val();
+		if(sum == result){
+			$("#check").html("That's Correct");
+			$("#check").css("color", "green");
+			}else{
+			$("#check").html("That's Wrong. The Answer is " +sum);
+			$("#check").css("color", "red");
+			}
+		}
+	</script>
+	<body>
+		<h1>Ex - Random Number For Answer</h1>
+		<button onclick="random();">Random Number</button>
+		<br>
+		<br>
+		<a id="a"></a><input type="text" name="result" id="result">
+		<input type="hidden" id="sum">
+		<br>
+		<br>
+		<button onclick="answer();">Send Answer</button>
+		<br>
+		<br>
+		<p>Result : <a id = "check"></a></p>
+	</body>
+</html>
